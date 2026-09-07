@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#e4a73b" />
+  <title>Cartão Fidelidade | Mocotó</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Varela+Round&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <main class="loyalty-card">
+    <header class="card-header">
+      <div class="logo-slot"><img src="logo.png" alt="Logo do restaurante Mocotó" /></div>
+      <h1>Mocotó</h1>
+      <p>cartão fidelidade digital</p>
+    </header>
+
+    <section class="card-content" aria-labelledby="progress-title">
+      <p id="week-label" class="week-label"></p>
+      <div id="stamps-grid" class="stamps-grid" aria-label="Progresso de visitas"></div>
+      <div class="progress-heading">
+        <strong id="progress-title">0 de 10 visitas</strong>
+        <span id="progress-remaining">faltam 10</span>
+      </div>
+      <div class="progress-track" aria-hidden="true"><div id="progress-fill" class="progress-fill"></div></div>
+
+      <div class="reward-preview">
+        <span class="reward-icon" aria-hidden="true">★</span>
+        <p>Complete <strong>10 visitas na mesma semana</strong> e ganhe <strong>uma rodada de dadinhos de tapioca, cortesia da casa!</strong></p>
+      </div>
+
+      <form id="visit-form" class="visit-form">
+        <label for="visit-code">Código da visita</label>
+        <div class="code-row">
+          <input id="visit-code" name="visit-code" type="text" autocomplete="off" placeholder="Digite o código" required />
+          <button class="primary-button" type="submit">Validar visita</button>
+        </div>
+        <p id="validation-message" class="validation-message" role="alert" aria-live="polite"></p>
+      </form>
+      <p id="status-live" class="sr-only" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <div id="modal-overlay" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-panel">
+      <div id="confetti-container" class="confetti-container" aria-hidden="true"></div>
+      <div class="modal-content">
+        <div class="modal-star" aria-hidden="true">★</div>
+        <h2 id="modal-title">Parabéns!</h2>
+        <p>Você completou 10 visitas na semana e ganhou:</p>
+        <strong>uma rodada de dadinhos de tapioca, cortesia da casa!</strong>
+        <button id="close-modal" class="modal-button" type="button">Fechar e começar de novo</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

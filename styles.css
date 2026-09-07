@@ -1,0 +1,122 @@
+:root {
+  --cream: #fbf1de;
+  --card: #fffbf0;
+  --mustard: #e4a73b;
+  --mustard-light: #f3ce87;
+  --mustard-dark: #c4842a;
+  --brown: #4a2a18;
+  --brown-soft: #6b4226;
+  --terracotta: #c1502e;
+  --terracotta-dark: #9c3d22;
+  --herb: #5c7a4b;
+  --herb-light: #dce7d3;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 16px;
+  display: grid;
+  place-items: center;
+  color: var(--brown);
+  background-color: var(--cream);
+  background-image: radial-gradient(var(--mustard-light) 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+  font-family: "Varela Round", sans-serif;
+}
+
+button, input { font: inherit; }
+button { cursor: pointer; }
+
+.loyalty-card {
+  width: min(100%, 430px);
+  overflow: hidden;
+  background: var(--card);
+  border-radius: 36px;
+  box-shadow: 0 18px 45px rgba(74, 42, 24, .18);
+}
+
+.card-header {
+  padding: 28px 24px 30px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--mustard), var(--mustard-dark));
+}
+
+.logo-slot {
+  width: 104px;
+  height: 104px;
+  margin: 0 auto 12px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #fff;
+  border: 3px solid var(--brown);
+  border-radius: 50%;
+}
+
+.logo-slot img { width: 100%; height: 100%; object-fit: contain; }
+.card-header h1 { margin: 0; font: 700 32px/1 "Fredoka", sans-serif; }
+.card-header p { margin: 7px 0 0; color: var(--brown-soft); font-size: 14px; }
+.card-content { padding: 24px; }
+.week-label { margin: 0 0 16px; text-align: center; color: var(--brown-soft); font-size: 12px; }
+
+.stamps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 18px; }
+.stamp {
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  color: var(--mustard-dark);
+  border: 3px dashed var(--mustard-dark);
+  border-radius: 50%;
+  font: 600 16px "Fredoka", sans-serif;
+}
+.stamp.filled { color: #fff7e8; background: var(--terracotta); border-style: solid; border-color: var(--terracotta-dark); animation: stamp-pop .4s ease; }
+.stamp.filled::before { content: "✓"; font-size: 22px; }
+.stamp.filled { font-size: 0; }
+
+.progress-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.progress-heading strong { font: 600 17px "Fredoka", sans-serif; }
+.progress-heading span { color: var(--brown-soft); font-size: 12px; }
+.progress-track { height: 14px; margin: 8px 0 20px; overflow: hidden; background: var(--mustard-light); border-radius: 99px; }
+.progress-fill { width: 0; height: 100%; background: linear-gradient(90deg, var(--terracotta), var(--terracotta-dark)); border-radius: inherit; transition: width .5s ease; }
+
+.reward-preview { display: flex; gap: 12px; align-items: flex-start; padding: 15px; margin-bottom: 22px; background: var(--herb-light); border: 2px solid var(--herb); border-radius: 18px; font-size: 14px; line-height: 1.45; }
+.reward-preview p { margin: 0; }
+.reward-icon { color: var(--herb); font-size: 25px; line-height: 1; }
+.visit-form label { display: block; margin-bottom: 8px; font: 600 16px "Fredoka", sans-serif; }
+.code-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+input { min-width: 0; padding: 13px 14px; color: var(--brown); background: #fff; border: 2px solid var(--mustard-dark); border-radius: 14px; outline: none; }
+input:focus { border-color: var(--terracotta); box-shadow: 0 0 0 3px rgba(193, 80, 46, .18); }
+.primary-button, .modal-button { padding: 13px 16px; color: #fff8ea; background: var(--terracotta); border: 0; border-radius: 14px; box-shadow: 0 4px 0 var(--terracotta-dark); font: 600 15px "Fredoka", sans-serif; }
+.primary-button:active, .modal-button:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--terracotta-dark); }
+.validation-message { min-height: 18px; margin: 8px 0 0; color: var(--terracotta-dark); font-size: 12px; }
+.validation-message.success { color: var(--herb); }
+
+.modal-overlay { position: fixed; inset: 0; z-index: 10; display: grid; place-items: center; padding: 20px; background: rgba(74, 42, 24, .58); }
+.modal-overlay[hidden] { display: none; }
+.modal-panel { position: relative; width: min(100%, 380px); overflow: hidden; background: linear-gradient(150deg, var(--mustard), var(--terracotta)); border-radius: 30px; animation: modal-pop .4s ease; }
+.modal-content { position: relative; padding: 34px 26px 28px; text-align: center; color: #fff7e8; }
+.modal-star { width: 66px; height: 66px; margin: 0 auto 14px; display: grid; place-items: center; color: #fff7e8; background: rgba(255,255,255,.2); border-radius: 50%; font-size: 36px; }
+.modal-content h2 { margin: 0 0 8px; font: 700 30px "Fredoka", sans-serif; }
+.modal-content p { margin: 0 0 4px; font-size: 14px; }
+.modal-content > strong { display: block; margin-bottom: 22px; font-size: 15px; }
+.modal-button { width: 100%; color: var(--terracotta-dark); background: #fff7e8; box-shadow: none; }
+.confetti-container { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.confetti-piece { position: absolute; top: -12px; width: 8px; height: 14px; border-radius: 3px; animation: confetti-fall 1.5s ease-in forwards; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+@keyframes stamp-pop { 0% { transform: scale(.5); opacity: 0; } 70% { transform: scale(1.12); } 100% { transform: scale(1); opacity: 1; } }
+@keyframes modal-pop { from { transform: scale(.82); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes confetti-fall { to { transform: translateY(360px) rotate(300deg); opacity: 0; } }
+
+@media (max-width: 390px) {
+  .code-row { grid-template-columns: 1fr; }
+  .primary-button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}
